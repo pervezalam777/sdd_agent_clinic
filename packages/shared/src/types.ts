@@ -31,3 +31,48 @@ export interface HealthCheck {
   timestamp: string
   services: Record<string, string>
 }
+
+export type EngagementAction = 'view' | 'edit'
+
+export interface EngagementMetadata {
+  viewerId?: string
+  fieldsChanged?: string[]
+  ipAddress?: string
+  userAgent?: string
+}
+
+export interface ProfileEngagementEvent {
+  id: string
+  profileId: string
+  viewerId: string | null
+  action: EngagementAction
+  metadata: EngagementMetadata | null
+  timestamp: string
+}
+
+export interface ProfileMetrics {
+  profileId: string
+  totalViews: number
+  uniqueViewers: number
+  totalEdits: number
+  avgTimeBetweenEdits: number | null // in seconds
+  fieldChanges: Record<string, number>
+  lastActivity: string | null
+  timeRange: {
+    start: string
+    end: string
+  }
+}
+
+export interface AggregateMetrics {
+  totalProfiles: number
+  totalViews: number
+  totalEdits: number
+  avgEngagementPerProfile: number
+  topViewedProfiles: Array<{ profileId: string; views: number }>
+  topEditedProfiles: Array<{ profileId: string; edits: number }>
+  timeRange: {
+    start: string
+    end: string
+  }
+}

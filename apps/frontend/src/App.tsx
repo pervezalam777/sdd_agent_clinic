@@ -3,6 +3,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Agents from './pages/Agents'
 import CheckIn from './pages/CheckIn'
+import ProfileAnalyticsPage from './pages/ProfileAnalyticsPage'
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
               <a href="/check-in" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-200">
                 Check-In
               </a>
+              <a href="/analytics/profiles" className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:bg-gray-200">
+                Analytics
+              </a>
             </div>
           </div>
         </div>
@@ -36,6 +40,7 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/agents" element={<Agents />} />
           <Route path="/check-in" element={<CheckIn />} />
+          <Route path="/analytics/profiles/:profileId" element={<ProfileAnalyticsPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

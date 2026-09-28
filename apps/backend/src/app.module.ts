@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { RedisModule } from './config/redis.module'
 import { HealthController } from './modules/health/health.controller'
+import { ProfileEngagementModule } from './modules/profile-engagement/profile-engagement.module'
 
 @Module({
   imports: [
@@ -40,6 +41,7 @@ import { HealthController } from './modules/health/health.controller'
       },
     }),
     RedisModule,
+    ProfileEngagementModule,
   ],
   controllers: [HealthController],
   providers: [],
