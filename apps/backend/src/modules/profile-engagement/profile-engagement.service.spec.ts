@@ -4,18 +4,19 @@ import { getRepositoryToken } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 import { ProfileEngagement } from './entities/profile-engagement.entity'
 import { EngagementAction } from '@agent-clinic/shared'
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 
 describe('ProfileEngagementService', () => {
   let service: ProfileEngagementService
   let repository: Repository<ProfileEngagement>
 
   const mockRepository = {
-    create: jest.fn(),
-    save: jest.fn(),
-    find: jest.fn(),
-    findAndCount: jest.fn(),
-    query: jest.fn(),
-    createQueryBuilder: jest.fn(),
+    create: vi.fn(),
+    save: vi.fn(),
+    find: vi.fn(),
+    findAndCount: vi.fn(),
+    query: vi.fn(),
+    createQueryBuilder: vi.fn(),
   }
 
   beforeEach(async () => {
@@ -34,7 +35,7 @@ describe('ProfileEngagementService', () => {
   })
 
   afterEach(() => {
-    jest.clearAllMocks()
+    vi.clearAllMocks()
   })
 
   describe('logEngagement', () => {
@@ -125,15 +126,15 @@ describe('ProfileEngagementService', () => {
 
       // Mock query builder
       const queryBuilder = {
-        where: jest.fn().mockReturnThis(),
-        andWhere: jest.fn().mockReturnThis(),
-        groupBy: jest.fn().mockReturnThis(),
-        select: jest.fn().mockReturnThis(),
-        addSelect: jest.fn().mockReturnThis(),
-        getRawMany: jest.fn().mockResolvedValue(mockStats),
-        getMany: jest.fn().mockResolvedValue(mockEditEvents),
-        orderBy: jest.fn().mockReturnThis(),
-        getOne: jest.fn().mockResolvedValue(mockLastActivity),
+        where: vi.fn().mockReturnThis(),
+        andWhere: vi.fn().mockReturnThis(),
+        groupBy: vi.fn().mockReturnThis(),
+        select: vi.fn().mockReturnThis(),
+        addSelect: vi.fn().mockReturnThis(),
+        getRawMany: vi.fn().mockResolvedValue(mockStats),
+        getMany: vi.fn().mockResolvedValue(mockEditEvents),
+        orderBy: vi.fn().mockReturnThis(),
+        getOne: vi.fn().mockResolvedValue(mockLastActivity),
       }
 
       mockRepository.createQueryBuilder.mockReturnValue(queryBuilder as any)
@@ -157,15 +158,15 @@ describe('ProfileEngagementService', () => {
       const mockStats: Array<{ action: string; count: string; uniqueViewers?: string }> = []
 
       const queryBuilder = {
-        where: jest.fn().mockReturnThis(),
-        andWhere: jest.fn().mockReturnThis(),
-        groupBy: jest.fn().mockReturnThis(),
-        select: jest.fn().mockReturnThis(),
-        addSelect: jest.fn().mockReturnThis(),
-        getRawMany: jest.fn().mockResolvedValue(mockStats),
-        getMany: jest.fn().mockResolvedValue([]),
-        orderBy: jest.fn().mockReturnThis(),
-        getOne: jest.fn().mockResolvedValue(null),
+        where: vi.fn().mockReturnThis(),
+        andWhere: vi.fn().mockReturnThis(),
+        groupBy: vi.fn().mockReturnThis(),
+        select: vi.fn().mockReturnThis(),
+        addSelect: vi.fn().mockReturnThis(),
+        getRawMany: vi.fn().mockResolvedValue(mockStats),
+        getMany: vi.fn().mockResolvedValue([]),
+        orderBy: vi.fn().mockReturnThis(),
+        getOne: vi.fn().mockResolvedValue(null),
       }
 
       mockRepository.createQueryBuilder.mockReturnValue(queryBuilder as any)
@@ -208,15 +209,15 @@ describe('ProfileEngagementService', () => {
 
       // Create a chainable query builder mock
       const queryBuilder = {
-        where: jest.fn().mockReturnThis(),
-        andWhere: jest.fn().mockReturnThis(),
-        groupBy: jest.fn().mockReturnThis(),
-        select: jest.fn().mockReturnThis(),
-        addSelect: jest.fn().mockReturnThis(),
-        orderBy: jest.fn().mockReturnThis(),
-        limit: jest.fn().mockReturnThis(),
-        getRawMany: jest.fn(),
-        getRawOne: jest.fn(),
+        where: vi.fn().mockReturnThis(),
+        andWhere: vi.fn().mockReturnThis(),
+        groupBy: vi.fn().mockReturnThis(),
+        select: vi.fn().mockReturnThis(),
+        addSelect: vi.fn().mockReturnThis(),
+        orderBy: vi.fn().mockReturnThis(),
+        limit: vi.fn().mockReturnThis(),
+        getRawMany: vi.fn(),
+        getRawOne: vi.fn(),
       }
 
       // Configure getRawMany to return different values based on the query
@@ -264,12 +265,12 @@ describe('ProfileEngagementService', () => {
       ]
 
       const queryBuilder = {
-        where: jest.fn().mockReturnThis(),
-        andWhere: jest.fn().mockReturnThis(),
-        groupBy: jest.fn().mockReturnThis(),
-        select: jest.fn().mockReturnThis(),
-        addSelect: jest.fn().mockReturnThis(),
-        getRawMany: jest.fn().mockResolvedValue(mockStats),
+        where: vi.fn().mockReturnThis(),
+        andWhere: vi.fn().mockReturnThis(),
+        groupBy: vi.fn().mockReturnThis(),
+        select: vi.fn().mockReturnThis(),
+        addSelect: vi.fn().mockReturnThis(),
+        getRawMany: vi.fn().mockResolvedValue(mockStats),
       }
 
       mockRepository.createQueryBuilder.mockReturnValue(queryBuilder as any)

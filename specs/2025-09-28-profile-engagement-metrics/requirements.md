@@ -1,4 +1,4 @@
-# Profile Engagement Metrics - Feature Requirements
+# Profile Engagement Metrics - Feature Requirements (Updated for Latest Libraries)
 
 ## Scope
 
@@ -72,8 +72,35 @@ This feature adds metrics and analytics to the Agent Profile System (Phase 2) to
 - Existing authentication system (JWT)
 - Existing profile CRUD endpoints
 - PostgreSQL database with TypeORM
+- Vitest for testing (replaces Jest)
 
 ### Constraints
 - Must work within Phase 2 timeline (Weeks 3-4)
 - 85% code coverage target
 - No external analytics services (keep self-contained)
+
+## Library Versions
+
+This feature uses the following updated library versions:
+
+| Library | Version | Notes |
+|---------|---------|-------|
+| React | ^19.3.0 | Latest with new APIs |
+| TypeScript | ^5.9.3 | Required for React 19.3 compatibility |
+| NestJS | ^12.0.1 | Latest stable |
+| TypeORM | ^1.1.1 | Improved type safety |
+| Vitest | ^4.1.0 | Vite-native testing |
+| Chart.js | ^4.4.0 | Chart visualization |
+| Zod | ^4.0.1 | Schema validation |
+
+## Migration Notes
+
+### Testing Framework
+- Vitest is now used instead of Jest
+- Jest-compatible APIs (expect, describe, it) are available
+- Faster test execution with native ESM support
+
+### Backend Dependencies
+- ioredis v6 requires Node.js >= 20
+- RESP3 is now the default wire protocol
+- Set `protocol: 2` to retain v5 behavior if needed

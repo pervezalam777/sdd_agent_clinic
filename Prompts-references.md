@@ -171,3 +171,8 @@ Important: You *must* use your AskUserQuestion tool, grouped on these 3, before 
 Weh are my databse choices if we want to deploy with vercel but also have a good local DX?
 Important: You *must* use your AskUserQuestion tool to ask me follow-up questions.
 ```
+
+# My Prompt
+```bash
+This application should use latest libraries for frontend and backend, use context7 to check latest librarie or web search and update @specs/tech-stack.md  document with latest libraries. Also update other spec documents if it has any mention of the libraries versions. update  plan, requirement and validation in  "2025-09-28-profile-engagement-metrics" so that it can be executed as tasks
+```

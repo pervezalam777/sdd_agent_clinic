@@ -1,4 +1,4 @@
-import { Test, TestingModule } from '@nestjs/testing'
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { ProfileEngagementController, AggregateMetricsController } from './profile-engagement.controller'
 import { ProfileEngagementService } from './profile-engagement.service'
 import { HttpException, HttpStatus } from '@nestjs/common'
@@ -9,29 +9,19 @@ describe('ProfileEngagementController', () => {
   let service: ProfileEngagementService
 
   const mockService = {
-    logEngagement: jest.fn(),
-    getProfileMetrics: jest.fn(),
-    getAggregateMetrics: jest.fn(),
-    getDailyTrends: jest.fn(),
+    logEngagement: vi.fn(),
+    getProfileMetrics: vi.fn(),
+    getAggregateMetrics: vi.fn(),
+    getDailyTrends: vi.fn(),
   }
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [ProfileEngagementController],
-      providers: [
-        {
-          provide: ProfileEngagementService,
-          useValue: mockService,
-        },
-      ],
-    }).compile()
-
-    controller = module.get<ProfileEngagementController>(ProfileEngagementController)
-    service = module.get<ProfileEngagementService>(ProfileEngagementService)
+  beforeEach(() => {
+    controller = new ProfileEngagementController(mockService as any)
+    service = mockService as any
   })
 
   afterEach(() => {
-    jest.clearAllMocks()
+    vi.clearAllMocks()
   })
 
   describe('logEngagement', () => {
@@ -61,7 +51,8 @@ describe('ProfileEngagementController', () => {
 
       try {
         await controller.logEngagement(profileId, req, body)
-        fail('Should have thrown an exception')
+        // Should not reach here
+        expect(true).toBe(false)
       } catch (err) {
         expect(err).toBeInstanceOf(HttpException)
         expect(err.getStatus()).toBe(HttpStatus.BAD_REQUEST)
@@ -85,7 +76,7 @@ describe('ProfileEngagementController', () => {
           req.user.id,
           undefined
         )
-        jest.clearAllMocks()
+        vi.clearAllMocks()
       }
     })
   })
@@ -155,29 +146,19 @@ describe('AggregateMetricsController', () => {
   let service: ProfileEngagementService
 
   const mockService = {
-    logEngagement: jest.fn(),
-    getProfileMetrics: jest.fn(),
-    getAggregateMetrics: jest.fn(),
-    getDailyTrends: jest.fn(),
+    logEngagement: vi.fn(),
+    getProfileMetrics: vi.fn(),
+    getAggregateMetrics: vi.fn(),
+    getDailyTrends: vi.fn(),
   }
 
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [AggregateMetricsController],
-      providers: [
-        {
-          provide: ProfileEngagementService,
-          useValue: mockService,
-        },
-      ],
-    }).compile()
-
-    controller = module.get<AggregateMetricsController>(AggregateMetricsController)
-    service = module.get<ProfileEngagementService>(ProfileEngagementService)
+  beforeEach(() => {
+    controller = new AggregateMetricsController(mockService as any)
+    service = mockService as any
   })
 
   afterEach(() => {
-    jest.clearAllMocks()
+    vi.clearAllMocks()
   })
 
   describe('getAggregateMetrics', () => {
@@ -237,7 +218,8 @@ describe('AggregateMetricsController', () => {
 
       try {
         await controller.getDailyTrends(profileId, req)
-        fail('Should have thrown an exception')
+        // Should not reach here
+        expect(true).toBe(false)
       } catch (err) {
         expect(err).toBeInstanceOf(HttpException)
         expect(err.getStatus()).toBe(HttpStatus.FORBIDDEN)

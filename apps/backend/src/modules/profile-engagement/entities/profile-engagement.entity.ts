@@ -22,15 +22,15 @@ export class ProfileEngagement {
   @Column({ type: 'uuid', nullable: true })
   viewerId: string | null
 
-  @Column({ type: 'enum', enum: ['view', 'edit'] })
+  @Column({ type: 'varchar', enum: ['view', 'edit'], default: 'view' })
   action: EngagementAction
 
-  @Column({ type: 'jsonb', nullable: true })
+  @Column({ type: 'text', nullable: true })
   metadata: EngagementMetadata | null
 
-  @CreateDateColumn({ type: 'timestamp with time zone' })
+  @CreateDateColumn({ type: 'datetime', nullable: true })
   timestamp: Date
 
-  @UpdateDateColumn({ type: 'timestamp with time zone' })
+  @UpdateDateColumn({ type: 'datetime', nullable: true })
   updatedAt: Date
 }

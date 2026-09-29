@@ -4,13 +4,13 @@
 
 **Goal**: Establish core infrastructure and minimum viable presence
 
-- Set up Turborepo monorepo with npm workspaces
-- Initialize React 19 + TypeScript + Vite project with Tailwind CSS
-- Configure Redux Toolkit with store, slices, and devtools
-- Set up React Router DOM with route structure
-- Initialize NestJS backend with TypeScript
-- Configure TypeORM for PostgreSQL with SQLite fallback option
-- Set up Jest + React Testing Library with 85% coverage threshold
+- Set up Turborepo monorepo with pnpm workspaces
+- Initialize React 19.3 + TypeScript 5.9 + Vite 8 project with Tailwind CSS v4.3
+- Configure Redux Toolkit 2.13 with store, slices, and devtools
+- Set up React Router DOM v7 with route structure
+- Initialize NestJS 12 backend with TypeScript
+- Configure TypeORM 0.4 for PostgreSQL with SQLite fallback option
+- Set up Vitest + React Testing Library 16.x with 85% coverage threshold
 - Configure CI/CD with GitHub Actions for automated testing
 - Set up Docker Compose for local development with PostgreSQL + Redis
 - Create multi-stage Docker builds for production deployment
@@ -30,7 +30,7 @@
 - Implement profile creation and editing API endpoints
 - Add fields for agent capabilities, stress indicators, and preferences
 - Build React components for profile viewing/ editing with Redux state
-- Implement form validation with React Hook Form + Zod
+- Implement form validation with React Hook Form + Zod v4
 - Write unit tests with 100% coverage for business logic
 
 **Deliverable**: Agents can create profiles with configurable attributes
